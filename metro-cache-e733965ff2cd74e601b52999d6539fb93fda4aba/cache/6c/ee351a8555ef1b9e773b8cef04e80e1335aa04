@@ -1,0 +1,225 @@
+__d(function (global, require, module, exports, _dependencyMap) {
+  var _react2 = require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = require(_dependencyMap[1], "./../react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  var _jsxFileName = "/home/nahuel/Desktop/FollowMe/node_modules/react-native-share/index.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = require(_dependencyMap[2], "react-native");
+
+  var _Overlay = require(_dependencyMap[3], "./components/Overlay");
+
+  var _Overlay2 = _interopRequireDefault(_Overlay);
+
+  var _Sheet = require(_dependencyMap[4], "./components/Sheet");
+
+  var _Sheet2 = _interopRequireDefault(_Sheet);
+
+  var _Button = require(_dependencyMap[5], "./components/Button");
+
+  var _Button2 = _interopRequireDefault(_Button);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  var _components = {
+    ShareSheet: {
+      displayName: "ShareSheet"
+    }
+  };
+
+  var _reactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/home/nahuel/Desktop/FollowMe/node_modules/react-native-share/index.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _reactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var styles = _reactNative.StyleSheet.create({
+    actionSheetContainer: {
+      flex: 1,
+      paddingTop: 10,
+      paddingBottom: 0,
+      justifyContent: "flex-end",
+      backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
+    buttonContainer: {
+      overflow: 'hidden',
+      backgroundColor: 'white',
+      paddingBottom: 5,
+      paddingTop: 5
+    }
+  });
+
+  var RNShare = function () {
+    function RNShare() {
+      _classCallCheck(this, RNShare);
+    }
+
+    _createClass(RNShare, null, [{
+      key: "open",
+      value: function open(options) {
+        return new Promise(function (resolve, reject) {
+          if (_reactNative.Platform.OS === "ios") {
+            _reactNative.ActionSheetIOS.showShareActionSheetWithOptions(options, function (error) {
+              return reject({
+                error: error
+              });
+            }, function (success, activityType) {
+              if (success) {
+                return resolve({
+                  app: activityType
+                });
+              } else {
+                reject({
+                  error: "User did not share"
+                });
+              }
+            });
+          } else {
+            _reactNative.NativeModules.RNShare.open(options, function (e) {
+              return reject({
+                error: e
+              });
+            }, function (e) {
+              resolve({
+                message: e
+              });
+            });
+          }
+        });
+      }
+    }, {
+      key: "shareSingle",
+      value: function shareSingle(options) {
+        if (_reactNative.Platform.OS === "ios" || _reactNative.Platform.OS === "android") {
+          return new Promise(function (resolve, reject) {
+            _reactNative.NativeModules.RNShare.shareSingle(options, function (e) {
+              return reject({
+                error: e
+              });
+            }, function (e) {
+              return resolve({
+                message: e
+              });
+            });
+          });
+        } else {
+          throw new Exception("not implemented");
+        }
+      }
+    }]);
+
+    return RNShare;
+  }();
+
+  var ShareSheet = _wrapComponent("ShareSheet")(function (_React$Component) {
+    _inherits(ShareSheet, _React$Component);
+
+    function ShareSheet() {
+      _classCallCheck(this, ShareSheet);
+
+      return _possibleConstructorReturn(this, (ShareSheet.__proto__ || Object.getPrototypeOf(ShareSheet)).apply(this, arguments));
+    }
+
+    _createClass(ShareSheet, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        var _this2 = this;
+
+        _reactNative.BackHandler.addEventListener('hardwareBackPress', function () {
+          if (_this2.props.visible) {
+            _this2.props.onCancel();
+
+            return true;
+          }
+
+          return false;
+        });
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _Overlay2.default,
+          _extends({
+            visible: this.props.visible
+          }, this.props, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 87
+            }
+          }),
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: styles.actionSheetContainer,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 88
+              }
+            },
+            _react3.default.createElement(_reactNative.TouchableOpacity, {
+              style: {
+                flex: 1
+              },
+              onPress: this.props.onCancel,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 89
+              }
+            }),
+            _react3.default.createElement(
+              _Sheet2.default,
+              {
+                visible: this.props.visible,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 93
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: styles.buttonContainer,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 94
+                  }
+                },
+                this.props.children
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return ShareSheet;
+  }(_react3.default.Component));
+
+  module.exports = RNShare;
+  module.exports.Overlay = _Overlay2.default;
+  module.exports.Sheet = _Sheet2.default;
+  module.exports.Button = _Button2.default;
+  module.exports.ShareSheet = ShareSheet;
+});
