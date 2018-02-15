@@ -1,0 +1,4 @@
+#Wed Feb 14 21:31:01 ART 2018
+base.0=/home/nahuel/Desktop/FollowMe/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/home/nahuel/Desktop/FollowMe/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
