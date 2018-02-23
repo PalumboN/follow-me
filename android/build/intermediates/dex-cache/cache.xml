@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/nahuel/Desktop/FollowMe/android/app/build/intermediates/exploded-aar/FollowMe/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="722e34ba5d4009c2551aca051aee8bd56cbdc19c">
+        <dex dex="/home/nahuel/Desktop/FollowMe/android/app/build/intermediates/pre-dexed/debug/FollowMe-react-native-vector-icons-unspecified_0cd6413f8b69e1dfca7372760302e5fb3e515585.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/nahuel/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
         jumboMode="false"
         optimize="true"

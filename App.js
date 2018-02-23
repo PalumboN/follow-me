@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import { Icon } from 'react-native-material-ui';
 import { StyleSheet, Text, View, TextInput, Button, Share } from 'react-native';
 
 const init = {
@@ -94,8 +95,9 @@ export default class App extends React.Component {
               />
               <Button
                 onPress = {() => this.reset()}
-                title = {"Reiniciar"}
+                title = {"Reiniciar!"}
               />
+              <Icon name="share"/>
             </View>)
         }
       </View>
@@ -106,7 +108,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 30,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
